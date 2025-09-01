@@ -1,17 +1,14 @@
 Для работы проекта нужно создать базу данных и таблицы.
 Сделайте это одним запросом в phpMyAdmin:
 
--- 0) База (создаст, если нет)
 CREATE DATABASE IF NOT EXISTS `hyvvxcrm_m3`
   DEFAULT CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
 
--- 1) Пользователь и права (совместимо со старыми версиями)
 GRANT ALL PRIVILEGES ON `hyvvxcrm_m3`.*
 TO 'hyvvxcrm'@'localhost' IDENTIFIED BY 'pCh3ru';
 FLUSH PRIVILEGES;
 
--- 2) Таблица users (полное имя схемы — без USE)
 CREATE TABLE IF NOT EXISTS `hyvvxcrm_m3`.`users` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name`     VARCHAR(256)  NOT NULL,
@@ -23,7 +20,6 @@ CREATE TABLE IF NOT EXISTS `hyvvxcrm_m3`.`users` (
   UNIQUE KEY `uniq_email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 3) Таблица task
 CREATE TABLE IF NOT EXISTS `hyvvxcrm_m3`.`task` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `car`    ENUM('bmw','tesla') NOT NULL,
